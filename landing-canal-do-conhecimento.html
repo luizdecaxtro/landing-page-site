@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>O Canal do Conhecimento — Lojas de Castro</title>
+<meta name="description" content="Livros, mentorias com apoio de IA, apps educacionais e cursos interativos. Conhecimento e Sabedoria por Luiz de Castro." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#F6F1E7;
+    --paper-2:#EFE8D8;
+    --ink:#211E1A;
+    --ink-soft:#5A534A;
+    --forest:#153A30;
+    --forest-2:#1E4E40;
+    --gold:#C2842A;
+    --gold-soft:#E8C77F;
+    --berry:#7C2D52;
+    --line:#D8CFBC;
+    --shadow:0 18px 40px -24px rgba(33,30,26,.45);
+    --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Inter",system-ui,sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{width:min(1180px,92vw);margin-inline:auto}
+
+  /* ---------- type ---------- */
+  .eyebrow{
+    font-family:"Inter";font-weight:600;font-size:.72rem;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:.6rem;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--gold);display:inline-block}
+  h1,h2,h3{font-family:"Fraunces",Georgia,serif;font-weight:600;line-height:1.04;letter-spacing:-.01em}
+
+  /* ---------- nav ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(246,241,231,.82);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.8rem 0}
+  .brand{display:flex;align-items:center;gap:.7rem;min-width:0}
+  .brand .mark{
+    width:38px;height:38px;border-radius:9px;background:var(--forest);color:var(--paper);
+    display:grid;place-items:center;font-family:"Fraunces";font-weight:600;font-size:1.25rem;flex:none;
+  }
+  .brand .txt b{font-family:"Fraunces";font-weight:600;font-size:1.02rem;display:block;line-height:1.1}
+  .brand .txt span{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft)}
+  .nav-cta{display:flex;align-items:center;gap:.5rem;flex:none}
+  .btn{
+    font-weight:600;font-size:.86rem;padding:.6rem 1.05rem;border-radius:999px;
+    border:1px solid transparent;transition:.18s ease;white-space:nowrap;cursor:pointer;
+  }
+  .btn-solid{background:var(--forest);color:var(--paper)}
+  .btn-solid:hover{background:var(--forest-2)}
+  .btn-ghost{border-color:var(--line);color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--forest);color:var(--forest)}
+  .btn-gold{background:var(--gold);color:#fff}
+  .btn-gold:hover{filter:brightness(1.06)}
+  @media(max-width:720px){.nav-cta .label-long{display:none}}
+
+  /* ---------- hero ---------- */
+  .hero{padding:clamp(3rem,7vw,5.5rem) 0 clamp(2rem,4vw,3rem);position:relative}
+  .hero h1{font-size:clamp(2.5rem,7vw,5rem);max-width:16ch;margin:.9rem 0 0}
+  .hero h1 em{font-style:italic;color:var(--berry)}
+  .hero .lead{margin-top:1.4rem;max-width:54ch;font-size:clamp(1rem,1.4vw,1.18rem);color:var(--ink-soft)}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:2rem}
+  .hero-cta .btn{font-size:.95rem;padding:.8rem 1.4rem}
+
+  /* domain ticker */
+  .ticker{margin-top:3rem;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    overflow:hidden;padding:.85rem 0;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+  .ticker-track{display:flex;gap:2.4rem;width:max-content;animation:scroll 32s linear infinite}
+  .ticker-track span{font-family:"Fraunces";font-style:italic;font-size:1.05rem;color:var(--forest);white-space:nowrap}
+  .ticker-track span::after{content:"·";margin-left:2.4rem;color:var(--gold);font-style:normal}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+
+  /* ---------- free book band ---------- */
+  .free-band{background:var(--forest);color:var(--paper);margin-top:3.5rem}
+  .free-inner{display:flex;flex-wrap:wrap;align-items:center;gap:1.4rem 2rem;padding:2.2rem 0}
+  .free-inner .free-tag{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-soft);font-weight:600}
+  .free-inner h3{font-size:clamp(1.4rem,3vw,2rem);color:var(--paper);margin-top:.3rem}
+  .free-inner p{color:#D8D0C0;max-width:48ch;margin-top:.5rem;font-size:.95rem}
+  .code-pill{display:inline-flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.08);
+    border:1px dashed var(--gold-soft);border-radius:10px;padding:.6rem .9rem;margin-top:.9rem;font-size:.9rem}
+  .code-pill b{font-family:"Fraunces";letter-spacing:.08em;color:var(--gold-soft)}
+  .free-inner .right{margin-left:auto;display:flex;gap:.7rem;flex-wrap:wrap}
+
+  /* ---------- sections ---------- */
+  section.block{padding:clamp(3rem,6vw,5rem) 0}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:2.2rem}
+  .sec-head .chapter{font-family:"Fraunces";font-style:italic;color:var(--gold);font-size:1rem}
+  .sec-head h2{font-size:clamp(1.8rem,3.6vw,2.7rem);margin-top:.2rem}
+  .sec-head .desc{max-width:42ch;color:var(--ink-soft);font-size:.95rem}
+
+  /* book grid */
+  .books{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:1.4rem 1.1rem}
+  .book{display:flex;flex-direction:column;gap:.55rem}
+  .book .cover{aspect-ratio:3/4.3;border-radius:10px;overflow:hidden;background:var(--paper-2);
+    border:1px solid var(--line);box-shadow:var(--shadow);position:relative;transition:.22s ease}
+  .book:hover .cover{transform:translateY(-5px)}
+  .book .cover img{width:100%;height:100%;object-fit:cover}
+  .book .cover .ph{position:absolute;inset:0;display:grid;place-items:center;text-align:center;
+    padding:.8rem;font-family:"Fraunces";font-size:.95rem;color:var(--forest)}
+  .book .ttl{font-weight:600;font-size:.92rem;line-height:1.25}
+  .book .order{font-size:.8rem;color:var(--gold);font-weight:600}
+  .book .order:hover{text-decoration:underline}
+  .book.soon .cover{background:repeating-linear-gradient(45deg,var(--paper-2),var(--paper-2) 10px,#E7DFCD 10px,#E7DFCD 20px)}
+  .book.soon .badge{position:absolute;top:.6rem;left:.6rem;background:var(--berry);color:#fff;
+    font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;padding:.25rem .5rem;border-radius:6px;font-weight:600}
+
+  /* generic card grid */
+  .cards{display:grid;gap:1.1rem}
+  .cards.c3{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+  .cards.c2{grid-template-columns:repeat(auto-fit,minmax(330px,1fr))}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:1.5rem;
+    display:flex;flex-direction:column;gap:.6rem;transition:.2s ease;position:relative;overflow:hidden}
+  .card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--gold-soft)}
+  .card .ic{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;font-size:1.3rem;
+    background:var(--paper-2);flex:none}
+  .card h3{font-size:1.2rem}
+  .card p{font-size:.9rem;color:var(--ink-soft);flex:1}
+  .card .go{font-weight:600;font-size:.85rem;color:var(--forest);display:inline-flex;align-items:center;gap:.35rem}
+  .card .go::after{content:"→";transition:.18s ease}
+  .card:hover .go::after{transform:translateX(4px)}
+  .card .tagline{position:absolute;top:1rem;right:1rem;font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;
+    color:#fff;background:var(--gold);padding:.2rem .5rem;border-radius:6px;font-weight:600}
+
+  /* mentoria highlight cards */
+  .ment{background:linear-gradient(150deg,#1A4438,#10302704);border:1px solid var(--line)}
+  .ment.dark{background:var(--forest);color:var(--paper);border-color:var(--forest)}
+  .ment.dark h3{color:var(--paper)}
+  .ment.dark p{color:#CFC7B7}
+  .ment.dark .go{color:var(--gold-soft)}
+  .ment .meta{font-size:.78rem;color:var(--ink-soft);display:flex;align-items:center;gap:.4rem}
+  .ment.dark .meta{color:#B9B0A0}
+
+  /* ---------- contact ---------- */
+  .contact{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:2.5rem;padding:clamp(2.5rem,5vw,4rem) 0}
+  @media(max-width:760px){.contact-grid{grid-template-columns:1fr}}
+  .contact h2{font-size:clamp(1.8rem,3.6vw,2.6rem)}
+  .contact p{color:var(--ink-soft);margin-top:.8rem;max-width:40ch}
+  .contact-actions{display:flex;flex-direction:column;gap:.7rem;margin-top:1.5rem;align-items:flex-start}
+  .contact-actions .btn{display:inline-flex;align-items:center;gap:.5rem}
+  .pub-box{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:1.6rem}
+  .pub-box h3{font-size:1.25rem}
+  .pub-box p{font-size:.9rem;margin-top:.5rem}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--ink);color:#CFC7B7;padding:2.8rem 0}
+  .foot-grid{display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:space-between;align-items:center}
+  footer a:hover{color:var(--gold-soft)}
+  .foot-links{display:flex;flex-wrap:wrap;gap:1.2rem;font-size:.88rem}
+  .foot-bottom{margin-top:1.6rem;border-top:1px solid #3a352d;padding-top:1.2rem;font-size:.8rem;color:#8c857a}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    .ticker-track{animation:none}
+    *{scroll-behavior:auto}
+  }
+
+  /* whatsapp float */
+  .wa{position:fixed;right:18px;bottom:18px;z-index:60;background:#25D366;color:#fff;
+    width:56px;height:56px;border-radius:50%;display:grid;place-items:center;box-shadow:0 10px 24px -6px rgba(0,0,0,.4);font-size:1.6rem;transition:.18s}
+  .wa:hover{transform:scale(1.06)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="https://www.lojasdecastro.com.br">
+      <span class="mark">C</span>
+      <span class="txt"><b>O Canal do Conhecimento</b><span>Lojas de Castro</span></span>
+    </a>
+    <nav class="nav-cta">
+      <a class="btn btn-ghost label-long" href="https://luizdecaxtro.github.io/cadastroclientes/cadastro_visitantes.html" target="_blank" rel="noopener">Cadastre-se</a>
+      <a class="btn btn-solid" href="https://wa.me/5598984193807?text=Ol%C3%A1,%20quero%20mais%20informa%C3%A7%C3%B5es" target="_blank" rel="noopener">Falar no WhatsApp</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Conhecimento e Sabedoria</span>
+    <h1>Um universo inteiro de aprendizado, reunido em <em>um só canal</em>.</h1>
+    <p class="lead">Livros, mentorias com apoio de inteligência artificial, apps educacionais e cursos interativos — da estatística às finanças, da espiritualidade à música. Tudo criado para acompanhar você em cada momento.</p>
+    <div class="hero-cta">
+      <a class="btn btn-gold" href="#biblioteca">Ver a biblioteca</a>
+      <a class="btn btn-ghost" href="#mentorias">Conhecer as mentorias</a>
+      <a class="btn btn-ghost" href="#apps">Apps de IA</a>
+    </div>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span>Estatística</span><span>Matemática Financeira</span><span>Inteligência Artificial</span><span>Espiritualidade</span><span>Música</span><span>Idiomas</span><span>Poesia</span><span>Empreendedorismo</span><span>Raciocínio Lógico</span><span>Português para Concursos</span>
+        <span>Estatística</span><span>Matemática Financeira</span><span>Inteligência Artificial</span><span>Espiritualidade</span><span>Música</span><span>Idiomas</span><span>Poesia</span><span>Empreendedorismo</span><span>Raciocínio Lógico</span><span>Português para Concursos</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FREE BOOK -->
+<section class="free-band">
+  <div class="wrap free-inner reveal">
+    <div>
+      <span class="free-tag">Cortesia para você</span>
+      <h3>Leia “Palavras que Libertam” gratuitamente</h3>
+      <p>Um mergulho na espiritualidade e no poder das palavras. Abra o Leitor de PDFs, informe o código e boa leitura.</p>
+      <span class="code-pill">Código de acesso: <b>10PQLIB22</b></span>
+    </div>
+    <div class="right">
+      <a class="btn btn-gold" href="https://lojasdecastro.com.br/acesso-aos-livros" target="_blank" rel="noopener">Abrir o Leitor de PDFs</a>
+    </div>
+  </div>
+</section>
+
+<!-- BIBLIOTECA -->
+<section class="block" id="biblioteca">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="chapter">Capítulo I</span>
+        <h2>A Biblioteca</h2>
+      </div>
+      <p class="desc">E-books que vão do romance à estatística, da fé ao empreendedorismo. Cada capa abre o link de compra.</p>
+    </div>
+
+    <div class="books reveal" id="grid-livros"></div>
+  </div>
+</section>
+
+<!-- MENTORIAS -->
+<section class="block" id="mentorias" style="background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="chapter">Capítulo II</span>
+        <h2>Mentorias com apoio de IA</h2>
+      </div>
+      <p class="desc">100% online, com apoio de IA especializada, 24 horas por dia, todos os dias. Aceitamos todas as modalidades de pagamento.</p>
+    </div>
+
+    <div class="cards c3">
+      <a class="card ment dark reveal" href="https://lojasdecastro.com.br/mentoria-profissoes-e-ia" target="_blank" rel="noopener">
+        <div class="ic" style="background:rgba(255,255,255,.1)">🎓</div>
+        <h3>Mentoria das Profissões + IA</h3>
+        <p>Cinco módulos com sistema protegido por senha, manual do aluno, glossário e avaliação final.</p>
+        <span class="meta">Online · com IA · 24h</span>
+        <span class="go">Fazer inscrição</span>
+      </a>
+
+      <a class="card ment reveal" href="https://lojasdecastro.com.br/mentoria-das-startups" target="_blank" rel="noopener">
+        <div class="ic">🚀</div>
+        <h3>Mentoria das Startups</h3>
+        <p>Para quem quer construir o próprio negócio. Inscrições liberadas, com módulos e checkout próprio.</p>
+        <span class="meta">Online · com IA · 24h</span>
+        <span class="go">Entrar na mentoria</span>
+      </a>
+
+      <a class="card ment reveal" href="https://lojasdecastro.com.br/mite-mentoria-inov-tec-educacao" target="_blank" rel="noopener">
+        <span class="tagline">+50% OFF</span>
+        <div class="ic">💡</div>
+        <h3>MITE — Inovação Tecnológica em Educação</h3>
+        <p>Mentoria da inovação tecnológica aplicada ao ensino, com desconto de mais de 50% anunciado no site.</p>
+        <span class="meta">Online · com IA · 24h</span>
+        <span class="go">Inscrever-se</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- APPS -->
+<section class="block" id="apps">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="chapter">Capítulo III</span>
+        <h2>Apps Incríveis &amp; Agentes de IA</h2>
+      </div>
+      <p class="desc">Ferramentas interativas e gratuitas, feitas para aprender fazendo.</p>
+    </div>
+
+    <div class="cards c3" id="grid-apps"></div>
+  </div>
+</section>
+
+<!-- CURSOS -->
+<section class="block" id="cursos" style="background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="chapter">Capítulo IV</span>
+        <h2>Cursos interativos</h2>
+      </div>
+      <p class="desc">Lições animadas, com voz e exercícios, da matemática elementar à estatística inferencial.</p>
+    </div>
+
+    <div class="cards c3" id="grid-cursos"></div>
+  </div>
+</section>
+
+<!-- CULTURA -->
+<section class="block" id="cultura">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="chapter">Capítulo V</span>
+        <h2>Cultura &amp; Diversão</h2>
+      </div>
+      <p class="desc">Porque aprender também é entretenimento: rádio, jogos, música e palavras.</p>
+    </div>
+
+    <div class="cards c2" id="grid-cultura"></div>
+  </div>
+</section>
+
+<!-- MAIS -->
+<section class="block" id="mais" style="background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="chapter">Capítulo VI</span>
+        <h2>Mais no canal</h2>
+      </div>
+    </div>
+    <div class="cards c3" id="grid-mais"></div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section class="contact" id="contato">
+  <div class="wrap contact-grid">
+    <div class="reveal">
+      <span class="eyebrow">Estamos aqui para você</span>
+      <h2>Entre em contato</h2>
+      <p>Tem dúvidas sobre os produtos ou quer uma recomendação? Fale com a gente — é só chamar.</p>
+      <div class="contact-actions">
+        <a class="btn btn-solid" href="https://wa.me/5598984193807?text=Ol%C3%A1,%20quero%20mais%20informa%C3%A7%C3%B5es" target="_blank" rel="noopener">💬 Conversar no WhatsApp</a>
+        <a class="btn btn-ghost" href="https://www.lojasdecastro.com.br/contato" target="_blank" rel="noopener">Página de contato</a>
+        <a class="btn btn-ghost" href="https://luizdecaxtro.github.io/cadastroclientes/cadastro_visitantes.html" target="_blank" rel="noopener">Cadastrar para receber novidades</a>
+      </div>
+    </div>
+    <div class="pub-box reveal">
+      <span class="eyebrow" style="color:var(--berry)">Para autores</span>
+      <h3>Publique seu trabalho literário</h3>
+      <p>Tem um livro ou obra que gostaria de publicar no site? Envie sua obra pela página de contato — vamos analisar e responder assim que possível.</p>
+      <a class="btn btn-gold" style="margin-top:1.1rem;display:inline-block" href="https://www.lojasdecastro.com.br/contato" target="_blank" rel="noopener">Enviar minha obra</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="brand">
+        <span class="mark" style="background:var(--gold)">C</span>
+        <span class="txt"><b style="color:var(--paper);font-family:Fraunces">O Canal do Conhecimento</b><span style="color:#8c857a">Lojas de Castro</span></span>
+      </div>
+      <nav class="foot-links">
+        <a href="https://www.lojasdecastro.com.br/">Home</a>
+        <a href="https://www.lojasdecastro.com.br/sobre">Sobre</a>
+        <a href="https://www.lojasdecastro.com.br/acesso-aos-livros">Acesso aos Livros</a>
+        <a href="https://www.lojasdecastro.com.br/area-de-membros">Área de Membros</a>
+        <a href="https://www.lojasdecastro.com.br/artigos-de-2026">Artigos de 2026</a>
+        <a href="https://www.lojasdecastro.com.br/contato">Contato</a>
+      </nav>
+    </div>
+    <div class="foot-bottom">LojasDeCastro © 2025–2026 · Criado com carinho para você. Conteúdo por Luiz de Castro — “Conhecimento e Sabedoria”.</div>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/5598984193807?text=Ol%C3%A1,%20quero%20mais%20informa%C3%A7%C3%B5es" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">💬</a>
+
+<script>
+  const S3 = "https://yata-apix-7c72f089-7d19-4fd6-80b4-f306c48e5657.s3-object.locaweb.com.br/";
+
+  /* ---- LIVROS (dados extraídos da home atual do site) ---- */
+  const livros = [
+    {t:"Palavras que Libertam", img:"3e88ef7e64ab408288614f0d22400314.jpg", url:"http://loja.infinitepay.io/decastro247/jjr8505-palavras-que-libertam"},
+    {t:"Episódios Impactantes do Pentateuco", img:"de9d5caf3db4484c86b776a4a3eadf12.jpg", url:"https://loja.infinitepay.io/decastro247/ivj1589-o-pentateuco"},
+    {t:"Elara e as Conexões para a Liberdade", img:"9b9a1c37dfbb46119572d70718d2afcb.jpg", url:"https://loja.infinitepay.io/decastro247/pmg7412-elara-e-as-conexoes-para-a-liberdade"},
+    {t:"Estatística Descritiva sem Mistério — Vol. 1", img:"9cc9501b6da9498c88898cf3155abdab.jpg", url:"https://loja.infinitepay.io/decastro247/wnv7427-estatisticas-descritiva-sem-misterio"},
+    {t:"Os Caminhos do Coração", img:"d442337b46c24b31850388607ea03e78.jpg", url:"http://loja.infinitepay.io/decastro247/jjd8900-os-caminhos-do-coracao"},
+    {t:"Os Melhores Negócios para as Mulheres", img:"fd3809cbc10c40f4bc2f3fa5e28b9925.jpg", url:"http://loja.infinitepay.io/decastro247/mzv2223-os-melhores-negocios-para-as-mulheres-no-m"},
+    {t:"O Poder da Inteligência Artificial", img:"83f1720833164f349f1fb88568c274dd.jpg", url:"https://loja.infinitepay.io/decastro247/xxn9673-o-poder-da-inteligencia-artificial-na-educ"},
+    {t:"Poemas", img:"b7c0b484bd3c4682b4ba54720ea1cdbd.jpg", url:"http://mpago.la/12bgNcQ"},
+    {t:"O Bem e o Mal — Defeitos e Virtudes", img:"6186ef82ce39483f934091e8a4187af7.jpg", url:"https://loja.infinitepay.io/decastro247/cvg2429-o-bem-e-o-mal-defeitos-e-virtudes-que-nos-"},
+    {t:"Como Ter Sucesso na Vida Profissional", img:"c4379181915f4fb495cc109f7a1a4832.jpg", url:"https://loja.infinitepay.io/decastro247/agm9262-como-ter-sucesso-na-vida-profissional"},
+    {t:"Mentores Espirituais — Resgatando Vidas", img:"88061d1e47b44622b2ab70ef7a8f4aef.jpg", url:"https://loja.infinitepay.io/decastro247/imj4009-mentores-espirituais-resgatando-vidas"},
+    {t:"Manual de Negócios na Internet", img:"2fec3d14cfd5414ab3be6bcd613c2633.jpg", url:"https://loja.infinitepay.io/decastro247/odb5486-manual-de-negocios-na-internet---o-guia-co"},
+  ];
+  const emBreve = [
+    {t:"Estatística Descritiva + Probabilidade — Vol. 2"},
+    {t:"Mentoria das Startups — O Livro dos Empreendedores"},
+    {t:"Deus, o Mal e o Sofrimento"},
+  ];
+
+  const apps = [
+    {ic:"🗣️", t:"Inglês — Iniciante", d:"Curso de conversação em família para começar do zero.", url:"https://lojasdecastro.com.br/ingles-iniciante"},
+    {ic:"🔊", t:"Tradutor Inglês com Voz", d:"Tradução inglês–português com leitura em voz alta.", url:"https://lojasdecastro.com.br/httpsluizdecaxtrogithubiotradutor-ingport-voztradutor-ingles-voz"},
+    {ic:"🏗️", t:"Construtor de Startup", d:"Ferramenta para estruturar a ideia do seu negócio.", url:"https://lojasdecastro.com.br/construtor-de-startup"},
+    {ic:"🤖", t:"Agente IA — Tec. Educacional", d:"Agente de IA voltado à tecnologia educacional.", url:"https://lojasdecastro.com.br/agente-ia-tec-educacional"},
+    {ic:"📖", t:"Glossário Dinâmico", d:"Consulta interativa de termos e definições.", url:"https://lojasdecastro.com.br/glossario-dinamico"},
+  ];
+
+  const cursos = [
+    {ic:"➗", t:"MateMágica — Fundamental", d:"Matemática do ensino fundamental com animações de lousa e voz.", url:"https://lojasdecastro.com.br/matemagica-fundamental"},
+    {ic:"📐", t:"MateMágica — Ensino Médio", d:"Conteúdo do ensino médio, partes 1 e 2.", url:"https://lojasdecastro.com.br/matemagica-o-ensino-medio-1-e-2"},
+    {ic:"📊", t:"Curso de Estatística", d:"Descritiva, Inferencial e Probabilidade em uma só trilha.", url:"https://lojasdecastro.com.br/curso-de-estatistica-123"},
+    {ic:"💰", t:"FinançaMágica", d:"Matemática financeira nos níveis básico e intermediário.", url:"https://lojasdecastro.com.br/financamagica"},
+    {ic:"✍️", t:"Português para Concursos", d:"Três partes de revisão objetiva para provas.", url:"https://lojasdecastro.com.br/portugues-concursos-1-2-3"},
+    {ic:"🧩", t:"Raciocínio Lógico", d:"Desafios lógicos para treinar o pensamento.", url:"https://lojasdecastro.com.br/desafio-logico"},
+  ];
+
+  const cultura = [
+    {ic:"📻", t:"Rádio Vibe FM", d:"Rádio web com DJ virtual, streams ao vivo e playlists geradas por IA.", url:"https://lojasdecastro.com.br/radio-vibe-as-melhores-musicas"},
+    {ic:"🃏", t:"Jogo: Figurinhas Educativo", d:"Álbum de figurinhas com mecânica de arrastar e soltar e níveis de dificuldade.", url:"https://lojasdecastro.com.br/jogo-educativo"},
+    {ic:"🎹", t:"Construtor de Acordes", d:"Gerador de sequências de acordes com síntese de áudio.", url:"https://lojasdecastro.com.br/construtor-de-acordes"},
+    {ic:"🗨️", t:"Vocábulos — O Poder da Eloquência", d:"Amplie o vocabulário e a expressão.", url:"https://lojasdecastro.com.br/podelok-o-poder-da-eloquencia"},
+  ];
+
+  const mais = [
+    {ic:"👥", t:"Área de Membros", d:"Acesso exclusivo a conteúdos e materiais.", url:"https://lojasdecastro.com.br/area-de-membros"},
+    {ic:"📰", t:"Artigos de 2026", d:"Textos e publicações recentes do canal.", url:"https://lojasdecastro.com.br/artigos-de-2026"},
+    {ic:"ℹ️", t:"Sobre o Canal", d:"Conheça a história e o propósito por trás do projeto.", url:"https://lojasdecastro.com.br/sobre"},
+  ];
+
+  /* render livros */
+  const gl = document.getElementById("grid-livros");
+  livros.forEach(b=>{
+    const a=document.createElement("a");
+    a.href=b.url; a.target="_blank"; a.rel="noopener"; a.className="book";
+    a.innerHTML=`<div class="cover"><div class="ph">${b.t}</div><img loading="lazy" src="${S3}${b.img}" alt="Capa: ${b.t}" onload="this.previousElementSibling.style.display='none'" onerror="this.style.display='none'"></div>
+      <div class="ttl">${b.t}</div><span class="order">Peça o seu →</span>`;
+    gl.appendChild(a);
+  });
+  emBreve.forEach(b=>{
+    const d=document.createElement("div");
+    d.className="book soon";
+    d.innerHTML=`<div class="cover"><span class="badge">Em breve</span><div class="ph">${b.t}</div></div>
+      <div class="ttl">${b.t}</div><span class="order" style="color:var(--ink-soft)">Em revisão</span>`;
+    gl.appendChild(d);
+  });
+
+  /* render card grids */
+  function cards(list, id){
+    const g=document.getElementById(id);
+    list.forEach(c=>{
+      const a=document.createElement("a");
+      a.href=c.url; a.target="_blank"; a.rel="noopener"; a.className="card reveal";
+      a.innerHTML=`<div class="ic">${c.ic}</div><h3>${c.t}</h3><p>${c.d}</p><span class="go">Acessar</span>`;
+      g.appendChild(a);
+    });
+  }
+  cards(apps,"grid-apps");
+  cards(cursos,"grid-cursos");
+  cards(cultura,"grid-cultura");
+  cards(mais,"grid-mais");
+
+  /* reveal on scroll */
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}})},{threshold:.12});
+  document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
